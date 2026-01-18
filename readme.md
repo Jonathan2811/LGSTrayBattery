@@ -1,6 +1,31 @@
-# LGS Tray Battery
+# LGS Tray Battery (Fork)
 
-A rewrite/combination of my two programs [LGSTrayBattery](https://github.com/andyvorld/LGSTrayBattery) and [LGSTrayBattery_GHUB](https://github.com/andyvorld/LGSTrayBattery_GHUB), which should allow for interaction via both the native HID and Logitech GaminG Hub websockets.
+A fork of [andyvorld/LGSTrayBattery](https://github.com/andyvorld/LGSTrayBattery) with added notification features.
+
+## Fork Features
+
+### Battery Notifications
+This fork adds Windows toast notifications for battery events:
+
+**Low Battery Notifications**
+- Get notified when your device battery drops below a configurable threshold (default: 20%)
+- Configurable cooldown period to prevent notification spam
+
+**Charging Complete Notifications**
+- Get notified when your device finishes charging
+
+**Settings Window**
+- Access via right-click menu → "Notification Settings..."
+- Toggle low battery notifications on/off
+- Set custom battery threshold percentage
+- Set notification cooldown period (minutes)
+- Toggle charging complete notifications on/off
+
+---
+
+## Original Project
+
+A rewrite/combination of [LGSTrayBattery](https://github.com/andyvorld/LGSTrayBattery) and [LGSTrayBattery_GHUB](https://github.com/andyvorld/LGSTrayBattery_GHUB), which should allow for interaction via both the native HID and Logitech Gaming Hub websockets.
 
 ## How to install
 
