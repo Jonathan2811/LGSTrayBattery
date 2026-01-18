@@ -9,15 +9,17 @@ namespace LGSTrayUI
     public class LogiDeviceViewModelFactory
     {
         private readonly LogiDeviceIconFactory _logiDeviceIconFactory;
+        private readonly BatteryNotificationService _notificationService;
 
-        public LogiDeviceViewModelFactory(LogiDeviceIconFactory logiDeviceIconFactory)
+        public LogiDeviceViewModelFactory(LogiDeviceIconFactory logiDeviceIconFactory, BatteryNotificationService notificationService)
         {
             _logiDeviceIconFactory = logiDeviceIconFactory;
+            _notificationService = notificationService;
         }
 
         public LogiDeviceViewModel CreateViewModel(Action<LogiDeviceViewModel>? config = null)
         {
-            LogiDeviceViewModel output = new(_logiDeviceIconFactory);
+            LogiDeviceViewModel output = new(_logiDeviceIconFactory, _notificationService);
             config?.Invoke(output);
 
             return output;
@@ -27,15 +29,17 @@ namespace LGSTrayUI
     public partial class LogiDeviceViewModel : LogiDevice
     {
         private readonly LogiDeviceIconFactory _logiDeviceIconFactory;
+        private readonly BatteryNotificationService _notificationService;
 
         [ObservableProperty]
         private bool _isChecked = false;
 
         private LogiDeviceIcon? taskbarIcon;
 
-        public LogiDeviceViewModel(LogiDeviceIconFactory logiDeviceIconFactory)
+        public LogiDeviceViewModel(LogiDeviceIconFactory logiDeviceIconFactory, BatteryNotificationService notificationService)
         {
             _logiDeviceIconFactory = logiDeviceIconFactory;
+            _notificationService = notificationService;
         }
 
         partial void OnIsCheckedChanged(bool oldValue, bool newValue)
@@ -70,6 +74,8 @@ namespace LGSTrayUI
             BatteryVoltage = updateMessage.batteryMVolt / 1000.0;
             BatteryMileage = updateMessage.Mileage;
             LastUpdate = updateMessage.updateTime;
+
+            _notificationService.CheckAndNotify(DeviceId, DeviceName, BatteryPercentage, PowerSupplyStatus);
         }
     }
 }

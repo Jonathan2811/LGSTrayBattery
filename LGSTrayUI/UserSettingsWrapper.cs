@@ -20,6 +20,54 @@ namespace LGSTrayUI
             }
         }
 
+        public bool LowBatteryNotificationEnabled
+        {
+            get => Properties.Settings.Default.LowBatteryNotificationEnabled;
+            set
+            {
+                Properties.Settings.Default.LowBatteryNotificationEnabled = value;
+                Properties.Settings.Default.Save();
+
+                OnPropertyChanged();
+            }
+        }
+
+        public bool ChargingCompleteNotificationEnabled
+        {
+            get => Properties.Settings.Default.ChargingCompleteNotificationEnabled;
+            set
+            {
+                Properties.Settings.Default.ChargingCompleteNotificationEnabled = value;
+                Properties.Settings.Default.Save();
+
+                OnPropertyChanged();
+            }
+        }
+
+        public int NotificationThreshold
+        {
+            get => Properties.Settings.Default.NotificationThreshold;
+            set
+            {
+                Properties.Settings.Default.NotificationThreshold = value;
+                Properties.Settings.Default.Save();
+
+                OnPropertyChanged();
+            }
+        }
+
+        public int NotificationCooldownMinutes
+        {
+            get => Properties.Settings.Default.NotificationCooldownMinutes;
+            set
+            {
+                Properties.Settings.Default.NotificationCooldownMinutes = value;
+                Properties.Settings.Default.Save();
+
+                OnPropertyChanged();
+            }
+        }
+
         public void AddDevice(string deviceId)
         {
             if (Properties.Settings.Default.SelectedDevices.Contains(deviceId))

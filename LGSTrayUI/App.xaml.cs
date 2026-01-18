@@ -38,6 +38,7 @@ public partial class App : Application
         builder.Services.Configure<AppSettings>(builder.Configuration);
         builder.Services.AddLGSMessagePipe(true);
         builder.Services.AddSingleton<UserSettingsWrapper>();
+        builder.Services.AddSingleton<BatteryNotificationService>();
 
         builder.Services.AddSingleton<LogiDeviceIconFactory>();
         builder.Services.AddSingleton<LogiDeviceViewModelFactory>();

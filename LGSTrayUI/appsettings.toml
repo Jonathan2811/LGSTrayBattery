@@ -22,3 +22,16 @@ pollPeriod = 600
 # List of disabled devices
 disabledDevices = [
 ]
+
+[Notifications]
+# Enable low battery notifications
+lowBatteryEnabled = true
+
+# Enable charging complete notifications
+chargingCompleteEnabled = true
+
+# Battery percentage threshold to trigger low battery notification
+threshold = 20
+
+# Cooldown in minutes between low battery notifications for the same device
+cooldownMinutes = 30

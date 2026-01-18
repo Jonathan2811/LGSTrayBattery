@@ -39,13 +39,61 @@ namespace LGSTrayUI.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool NumericDisplay {
             get {
                 return ((bool)(this["NumericDisplay"]));
             }
             set {
                 this["NumericDisplay"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool LowBatteryNotificationEnabled {
+            get {
+                return ((bool)(this["LowBatteryNotificationEnabled"]));
+            }
+            set {
+                this["LowBatteryNotificationEnabled"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ChargingCompleteNotificationEnabled {
+            get {
+                return ((bool)(this["ChargingCompleteNotificationEnabled"]));
+            }
+            set {
+                this["ChargingCompleteNotificationEnabled"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int NotificationThreshold {
+            get {
+                return ((int)(this["NotificationThreshold"]));
+            }
+            set {
+                this["NotificationThreshold"] = value;
+            }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int NotificationCooldownMinutes {
+            get {
+                return ((int)(this["NotificationCooldownMinutes"]));
+            }
+            set {
+                this["NotificationCooldownMinutes"] = value;
             }
         }
     }

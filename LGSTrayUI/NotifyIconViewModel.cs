@@ -87,12 +87,14 @@ namespace LGSTrayUI
         private bool _rediscoverDevicesEnabled = true;
 
         private readonly IEnumerable<IDeviceManager> _deviceManagers;
+        private readonly BatteryNotificationService _notificationService;
 
         public NotifyIconViewModel(
             MainTaskbarIconWrapper mainTaskbarIconWrapper,
             ILogiDeviceCollection logiDeviceCollection,
             UserSettingsWrapper userSettings,
-            IEnumerable<IDeviceManager> deviceManagers
+            IEnumerable<IDeviceManager> deviceManagers,
+            BatteryNotificationService notificationService
         )
         {
             _mainTaskbarIconWrapper = mainTaskbarIconWrapper;
@@ -101,12 +103,20 @@ namespace LGSTrayUI
             _logiDevices = (logiDeviceCollection as LogiDeviceCollection)!.Devices;
             _userSettings = userSettings;
             _deviceManagers = deviceManagers;
+            _notificationService = notificationService;
         }
 
         [RelayCommand]
         private static void ExitApplication()
         {
             Environment.Exit(0);
+        }
+
+        [RelayCommand]
+        private void OpenSettings()
+        {
+            var settingsWindow = new SettingsWindow(_userSettings);
+            settingsWindow.ShowDialog();
         }
 
         [RelayCommand]
